@@ -17,8 +17,8 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'dark',
-  themeColor: '#10b981',
+  colorScheme: 'light',
+  themeColor: '#10B981',
 }
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ar" dir="rtl" className={`${cairo.variable} dark`}>
+    <html lang="ar" dir="rtl" className={cairo.variable}>
       <body className="font-sans antialiased bg-background text-foreground">
         <Providers>
           {children}

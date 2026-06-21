@@ -21,56 +21,48 @@ export function NavigationBar() {
 
   return (
     <>
-      <nav className="sticky top-0 z-40 glass border-b border-white/10">
+      <nav className="sticky top-0 z-40 bg-white border-b border-border shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-4 flex-1">
+          <div className="flex items-center gap-4 flex-1 md:flex-none md:order-2">
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden"
+              className="md:hidden text-foreground hover:bg-foreground/5"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
-              {mobileMenuOpen ? <X /> : <Menu />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </Button>
           </div>
 
-          <Link href="/" className="flex items-center gap-2 mx-auto md:mx-0">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary via-secondary to-primary rounded-lg flex items-center justify-center glow-primary">
+          <Link href="/" className="flex items-center gap-3 md:order-1">
+            <div className="w-10 h-10 bg-gradient-to-br from-primary to-emerald-500 rounded-lg flex items-center justify-center shadow-sm">
               <span className="text-white font-bold text-lg">الصياد</span>
             </div>
-            <span className="font-bold text-lg hidden sm:inline bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">أكاديمية الصياد</span>
+            <span className="font-bold text-lg text-foreground hidden sm:inline">أكاديمية الصياد</span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-8 flex-1">
-            <Link href="/" className="text-foreground/80 hover:text-primary transition-colors duration-200 text-sm">
-              الرئيسية
-            </Link>
-            <Link href="/signals" className="text-foreground/80 hover:text-primary transition-colors duration-200 text-sm">
-              التوصيات
-            </Link>
-            <Link href="/markets" className="text-foreground/80 hover:text-primary transition-colors duration-200 text-sm">
-              الأسواق
-            </Link>
+          <div className="hidden md:flex items-center gap-8 flex-1 justify-end md:order-3">
+            <Link href="/" className="nav-link">الرئيسية</Link>
+            <Link href="/signals" className="nav-link">التوصيات</Link>
+            <Link href="/dashboard" className="nav-link">الدورات</Link>
+            <Link href="/markets" className="nav-link">الأسواق</Link>
+            <Link href="/telegram-bots" className="nav-link">بوتات تيليجرام</Link>
             {isLoggedIn && (
               <>
-                <Link href="/dashboard" className="text-foreground/80 hover:text-primary transition-colors duration-200 text-sm">
-                  لوحة التحكم
-                </Link>
+                <Link href="/dashboard" className="nav-link">لوحة التحكم</Link>
                 {user?.role === 'admin' && (
-                  <Link href="/admin" className="text-foreground/80 hover:text-primary transition-colors duration-200 text-sm">
-                    الإدارة
-                  </Link>
+                  <Link href="/admin" className="nav-link">الإدارة</Link>
                 )}
               </>
             )}
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 md:order-4">
             <Button
               variant="ghost"
               size="sm"
               onClick={toggleLanguage}
-              className="text-foreground/80 hover:text-primary hover:bg-white/10 transition-all duration-200"
+              className="text-foreground/70 hover:text-foreground hover:bg-foreground/5"
             >
               <Globe className="w-4 h-4" />
               <span className="text-xs ml-1 font-semibold">{language === 'ar' ? 'EN' : 'ع'}</span>
@@ -78,14 +70,14 @@ export function NavigationBar() {
 
             {isLoggedIn ? (
               <>
-                <div className="hidden sm:flex items-center gap-2 text-sm border-r border-white/10 pr-3">
+                <div className="hidden sm:flex items-center gap-2 text-sm border-r border-border pr-3">
                   <span className="text-primary font-semibold">{user?.name}</span>
                 </div>
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={handleLogout}
-                  className="border-white/20 hover:bg-white/10"
+                  className="border-border hover:bg-foreground/5"
                 >
                   خروج
                 </Button>
@@ -103,25 +95,17 @@ export function NavigationBar() {
         </div>
 
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-white/10 px-4 py-4 flex flex-col gap-4 bg-white/5 backdrop-blur-md">
-            <Link href="/" className="text-foreground/80 hover:text-primary text-sm">
-              الرئيسية
-            </Link>
-            <Link href="/signals" className="text-foreground/80 hover:text-primary text-sm">
-              التوصيات
-            </Link>
-            <Link href="/markets" className="text-foreground/80 hover:text-primary text-sm">
-              الأسواق
-            </Link>
+          <div className="md:hidden border-t border-border bg-foreground/2 px-4 py-4 flex flex-col gap-3">
+            <Link href="/" className="nav-link block">الرئيسية</Link>
+            <Link href="/signals" className="nav-link block">التوصيات</Link>
+            <Link href="/dashboard" className="nav-link block">الدورات</Link>
+            <Link href="/markets" className="nav-link block">الأسواق</Link>
+            <Link href="/telegram-bots" className="nav-link block">بوتات تيليجرام</Link>
             {isLoggedIn && (
               <>
-                <Link href="/dashboard" className="text-foreground/80 hover:text-primary text-sm">
-                  لوحة التحكم
-                </Link>
+                <Link href="/dashboard" className="nav-link block">لوحة التحكم</Link>
                 {user?.role === 'admin' && (
-                  <Link href="/admin" className="text-foreground/80 hover:text-primary text-sm">
-                    الإدارة
-                  </Link>
+                  <Link href="/admin" className="nav-link block">الإدارة</Link>
                 )}
               </>
             )}
