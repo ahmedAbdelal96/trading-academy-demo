@@ -1,0 +1,590 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================
+   PREMIUM BLUE/PURPLE FINTECH SaaS DESIGN SYSTEM
+   Arabic RTL Trading Academy
+   ============================================================ */
+
+@theme inline {
+  --font-heading: var(--font-cairo);
+  --font-sans: var(--font-cairo), 'Cairo', 'Tajawal', system-ui, sans-serif;
+  --font-mono: 'Courier New', monospace;
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+}
+
+:root {
+  color-scheme: light;
+
+  /* === Core Colors === */
+  --background: #F3F7FB;
+  --foreground: #111827;
+  --card: #FFFFFF;
+  --card-foreground: #111827;
+  --popover: #FFFFFF;
+  --popover-foreground: #111827;
+
+  /* === Brand Colors: Blue/Purple === */
+  --primary: #2563EB;
+  --primary-foreground: #FFFFFF;
+  --secondary: #7C3AED;
+  --secondary-foreground: #FFFFFF;
+
+  /* === Muted / Neutral === */
+  --muted: #F1F5F9;
+  --muted-foreground: #64748B;
+  --accent: #EDE9FE;
+  --accent-foreground: #4F46E5;
+
+  /* === Semantic === */
+  --destructive: #DC2626;
+  --border: #E2E8F0;
+  --input: #F8FAFC;
+  --ring: #2563EB;
+
+  /* === Charts === */
+  --chart-1: #2563EB;
+  --chart-2: #7C3AED;
+  --chart-3: #0EA5E9;
+  --chart-4: #4F46E5;
+  --chart-5: #06B6D4;
+
+  /* === Border Radius === */
+  --radius: 0.875rem;
+
+  /* === Sidebar (Right, RTL) === */
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #374151;
+  --sidebar-primary: #2563EB;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #EFF6FF;
+  --sidebar-accent-foreground: #2563EB;
+  --sidebar-border: #E2E8F0;
+  --sidebar-ring: #2563EB;
+
+  /* === Custom Brand Tokens === */
+  --blue-primary: #2563EB;
+  --blue-bright: #0EA5E9;
+  --purple-primary: #7C3AED;
+  --indigo: #4F46E5;
+  --navy: #0F172A;
+  --blue-soft: #E0F2FE;
+  --purple-soft: #EDE9FE;
+  --success: #16A34A;
+  --warning: #F59E0B;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Cairo', 'Tajawal', system-ui, sans-serif;
+    font-feature-settings: 'kern' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cairo', 'Tajawal', system-ui, sans-serif;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  p {
+    line-height: 1.7;
+  }
+}
+
+/* ============================================================
+   LAYOUT UTILITIES
+   ============================================================ */
+@layer components {
+  .container-page {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 lg:py-24;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-foreground;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-muted-foreground leading-relaxed max-w-2xl;
+  }
+
+  /* ============================================================
+     CARD SYSTEM
+     ============================================================ */
+  .premium-card {
+    @apply bg-white border border-slate-200 rounded-2xl shadow-sm transition-all duration-300;
+    @apply hover:shadow-xl hover:-translate-y-1;
+  }
+
+  .premium-card-lg {
+    @apply bg-white border border-slate-200 rounded-3xl shadow-md p-6 transition-all duration-300;
+    @apply hover:shadow-2xl hover:-translate-y-1;
+  }
+
+  .gradient-card-blue {
+    background: linear-gradient(135deg, #2563EB 0%, #0EA5E9 100%);
+    @apply rounded-2xl text-white shadow-lg shadow-blue-500/25 border-0;
+  }
+
+  .gradient-card-purple {
+    background: linear-gradient(135deg, #7C3AED 0%, #4F46E5 100%);
+    @apply rounded-2xl text-white shadow-lg shadow-purple-500/25 border-0;
+  }
+
+  .metric-card {
+    @apply bg-white border border-slate-200 rounded-2xl p-6 shadow-sm transition-all duration-300;
+    @apply hover:shadow-lg hover:-translate-y-0.5;
+  }
+
+  .dashboard-card {
+    @apply bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden;
+  }
+
+  /* ============================================================
+     BUTTON SYSTEM
+     ============================================================ */
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold;
+    @apply rounded-xl px-6 py-3 h-11 min-h-[44px];
+    @apply transition-all duration-200 shadow-md shadow-blue-500/30;
+    @apply hover:shadow-lg hover:shadow-blue-500/40 hover:-translate-y-0.5;
+    @apply active:translate-y-0 active:scale-95;
+    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%);
+  }
+
+  .btn-secondary {
+    @apply text-white font-semibold;
+    @apply rounded-xl px-6 py-3 h-11 min-h-[44px];
+    @apply transition-all duration-200 shadow-md shadow-purple-500/30;
+    @apply hover:shadow-lg hover:shadow-purple-500/40 hover:-translate-y-0.5;
+    @apply active:translate-y-0 active:scale-95;
+    background: linear-gradient(135deg, #7C3AED 0%, #4F46E5 100%);
+  }
+
+  .btn-secondary:hover {
+    background: linear-gradient(135deg, #6D28D9 0%, #4338CA 100%);
+  }
+
+  .btn-soft {
+    @apply bg-blue-50 hover:bg-blue-100 text-blue-700 font-semibold;
+    @apply rounded-xl px-6 py-3 h-11 min-h-[44px] border border-blue-200;
+    @apply transition-all duration-200;
+    @apply hover:shadow-md hover:-translate-y-0.5;
+    @apply active:translate-y-0 active:scale-95;
+  }
+
+  .btn-outline-blue {
+    @apply border-2 border-blue-600 text-blue-600 bg-transparent hover:bg-blue-50 font-semibold;
+    @apply rounded-xl px-6 py-3 h-11 min-h-[44px];
+    @apply transition-all duration-200;
+    @apply hover:-translate-y-0.5 active:scale-95;
+  }
+
+  .btn-outline-purple {
+    @apply border-2 border-purple-600 text-purple-600 bg-transparent hover:bg-purple-50 font-semibold;
+    @apply rounded-xl px-6 py-3 h-11 min-h-[44px];
+    @apply transition-all duration-200;
+    @apply hover:-translate-y-0.5 active:scale-95;
+  }
+
+  /* ============================================================
+     NAVIGATION
+     ============================================================ */
+  .nav-link {
+    @apply text-slate-600 hover:text-blue-600 transition-colors duration-200 font-medium text-sm;
+    @apply relative py-1;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 rounded-full;
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+  }
+
+  .nav-link:hover::after {
+    transform: scaleX(1);
+  }
+
+  .nav-link.active {
+    @apply text-blue-600 font-semibold;
+  }
+
+  .nav-link.active::after {
+    transform: scaleX(1);
+  }
+
+  /* ============================================================
+     MARKET TICKER
+     ============================================================ */
+  .market-ticker {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-semibold whitespace-nowrap;
+    @apply transition-all duration-200 cursor-default;
+  }
+
+  .market-ticker.up {
+    @apply bg-green-50 border-green-200 text-green-700;
+  }
+
+  .market-ticker.down {
+    @apply bg-red-50 border-red-200 text-red-700;
+  }
+
+  .market-ticker.neutral {
+    @apply bg-blue-50 border-blue-200 text-blue-700;
+  }
+
+  /* ============================================================
+     BADGES
+     ============================================================ */
+  .badge-blue {
+    @apply bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-purple {
+    @apply bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-success {
+    @apply bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-danger {
+    @apply bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-warning {
+    @apply bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  /* ============================================================
+     GRADIENT TEXT
+     ============================================================ */
+  .gradient-text {
+    background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-blue {
+    background: linear-gradient(135deg, #2563EB 0%, #0EA5E9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ============================================================
+     SIGNAL CARDS
+     ============================================================ */
+  .signal-card {
+    @apply bg-white border-r-4 border-blue-600 rounded-xl p-4 shadow-sm;
+    @apply transition-all duration-200 hover:shadow-md;
+  }
+
+  .signal-card.buy {
+    @apply border-r-4 border-blue-600;
+  }
+
+  .signal-card.sell {
+    @apply border-r-4 border-purple-600;
+  }
+
+  /* ============================================================
+     FORM ELEMENTS
+     ============================================================ */
+  .form-label {
+    @apply text-sm font-semibold text-slate-700 block mb-2;
+  }
+
+  .form-input {
+    @apply w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-foreground;
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500;
+    @apply transition-all duration-200 placeholder:text-slate-400;
+  }
+
+  .form-select {
+    @apply w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-foreground;
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500;
+    @apply transition-all duration-200;
+    -webkit-appearance: none;
+  }
+
+  /* ============================================================
+     TOAST NOTIFICATION
+     ============================================================ */
+  .toast-success {
+    @apply fixed top-6 left-1/2 -translate-x-1/2 z-50;
+    @apply bg-white border border-green-200 rounded-2xl px-6 py-4 shadow-2xl;
+    @apply flex items-center gap-3 min-w-80;
+    animation: slide-down 0.3s ease, fade-out 0.3s ease 2.7s forwards;
+  }
+
+  .toast-error {
+    @apply fixed top-6 left-1/2 -translate-x-1/2 z-50;
+    @apply bg-white border border-red-200 rounded-2xl px-6 py-4 shadow-2xl;
+    @apply flex items-center gap-3 min-w-80;
+    animation: slide-down 0.3s ease, fade-out 0.3s ease 2.7s forwards;
+  }
+
+  /* ============================================================
+     SIDEBAR (Dashboard/Admin)
+     ============================================================ */
+  .sidebar-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 font-medium;
+    @apply transition-all duration-200 cursor-pointer;
+    @apply hover:bg-blue-50 hover:text-blue-700;
+  }
+
+  .sidebar-item.active {
+    @apply bg-blue-50 text-blue-700 font-semibold;
+  }
+
+  /* ============================================================
+     FLOATING ANIMATION
+     ============================================================ */
+  .floating-slow {
+    animation: float-slow 6s ease-in-out infinite;
+  }
+
+  .floating-fast {
+    animation: float-fast 4s ease-in-out infinite;
+  }
+
+  /* ============================================================
+     ICON CONTAINER
+     ============================================================ */
+  .icon-container-blue {
+    @apply w-12 h-12 rounded-2xl flex items-center justify-center;
+    background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+  }
+
+  .icon-container-purple {
+    @apply w-12 h-12 rounded-2xl flex items-center justify-center;
+    background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%);
+  }
+
+  .icon-container-indigo {
+    @apply w-12 h-12 rounded-2xl flex items-center justify-center;
+    background: linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%);
+  }
+}
+
+/* ============================================================
+   KEYFRAME ANIMATIONS
+   ============================================================ */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes float-fast {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; pointer-events: none; }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
+  70% { transform: scale(1); box-shadow: 0 0 0 12px rgba(37, 99, 235, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Utility animation classes */
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.3s ease forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.4s ease forwards;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s infinite;
+}
+
+/* ============================================================
+   TICKER ANIMATION WRAPPER
+   ============================================================ */
+.ticker-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.ticker-track {
+  display: flex;
+  gap: 1rem;
+  animation: ticker-scroll 30s linear infinite;
+  width: max-content;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+/* ============================================================
+   TABLE STYLES
+   ============================================================ */
+.data-table {
+  @apply w-full border-collapse;
+}
+
+.data-table th {
+  @apply text-xs font-semibold text-muted-foreground uppercase tracking-wider;
+  @apply px-4 py-3 text-right bg-slate-50 border-b border-slate-200;
+}
+
+.data-table td {
+  @apply px-4 py-4 text-sm border-b border-slate-100;
+}
+
+.data-table tr:last-child td {
+  @apply border-b-0;
+}
+
+.data-table tr:hover td {
+  @apply bg-blue-50/30;
+}
+
+/* ============================================================
+   HERO DASHBOARD MOCKUP
+   ============================================================ */
+.hero-mockup {
+  @apply relative rounded-3xl overflow-hidden;
+  background: linear-gradient(135deg, #F8FAFF 0%, #EEF2FF 100%);
+  box-shadow: 0 32px 64px -12px rgba(37, 99, 235, 0.15),
+              0 0 0 1px rgba(37, 99, 235, 0.05);
+}
+
+/* ============================================================
+   SCROLLBAR STYLING
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
